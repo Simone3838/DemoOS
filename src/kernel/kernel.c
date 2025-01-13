@@ -45,6 +45,8 @@ char read_key() {
     return c;
 }
 
+void reboot();
+
 void shell() {
     char command[256];
     size_t command_length = 0;
@@ -74,10 +76,12 @@ void shell() {
         new_line();
 
         if (strcmp(command, "help") == 0) {
-            print_string("Available commands: help, clear\n");
+            print_string("Available commands: help, clear, reboot\n");
         } else if (strcmp(command, "clear") == 0) {
             clear_screen();
             cursor_position = 0;
+        } else if (strcmp(command, "reboot") == 0) {
+            reboot();
         } else {
             print_string("Unknown command\n");
         }
